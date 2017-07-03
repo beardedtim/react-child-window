@@ -9,7 +9,8 @@
     "test:w": "jest --watch",
     "lint": "echo \" You have not set up a lint thing!\"; exit 0",
     "test:ci": "jest --coverage && codecov",
-    "ci": "yarn test:ci; yarn lint",
+    "ci": "yarn test:ci && yarn lint",
+    "build": "yarn ci && webpack -p",
     "pre-commit-message": "echo \" Ensuring CI will pass before we event think about commiting this...\"; exit 0"
   },
   "pre-commit": [
@@ -44,20 +45,12 @@
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.24.1",
+    "babel-loader": "^7.1.1",
+    "babel-polyfill": "^6.23.0",
     "codecov": "^2.2.0",
     "enzyme": "^2.9.1",
     "jest": "^20.0.4",
     "pre-commit": "^1.2.2",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-test-renderer": "^15.6.1"
-  },
-  "peerDependencies": {
-    "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
-  },
-  "dependencies": {
-    "babel-jest": "^20.0.3"
+    "webpack": "^3.0.0"
   }
 }
