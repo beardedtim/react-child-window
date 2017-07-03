@@ -1,8 +1,6 @@
-/* eslint-disable */
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import PropTypes from 'prop-types';
-import R from 'ramda';
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Window_features
 const defaultWindowOptions = [
