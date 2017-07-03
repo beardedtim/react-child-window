@@ -1,5 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
+const Uglify = require('uglifyjs-webpack-plugin');
 
 const context = path.resolve(__dirname);
 
@@ -10,13 +10,16 @@ const BUILD_DIR = path.join(context, 'dist');
 module.exports = {
   context,
   entry: [
-    'babel-polyfill',
     ENTRY_FILE,
   ],
   output: {
     filename: 'index.js',
     path: BUILD_DIR,
+    library: 'react-child-window',
+    libraryTarget: 'umd',
+    umdNamedDefine: true,
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -29,5 +32,10 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new Uglify({
+      sourceMap: true,
+    })
+  ]
 };
