@@ -13,7 +13,8 @@
   },
   "pre-commit": [
     "pre-commit-message",
-    "ci"
+    "test",
+    "lint"
   ],
   "devDependencies": {
     "codecov": "^2.2.0",
