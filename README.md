@@ -2,6 +2,8 @@
 
 > Sweet child o' miiiiiine
 
+[![Build Status](https://travis-ci.org/beardedtim/react-child-window.svg?branch=master)](https://travis-ci.org/beardedtim/react-child-window)
+
 ## Usage
 
 ```
