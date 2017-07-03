@@ -3,5 +3,18 @@
   "version": "0.0.1",
   "main": "index.js",
   "author": "beardedtim <timiroberts@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \" You have not set up a test thing!\"; exit 0",
+    "lint": "echo \" You have not set up a lint thing!\"; exit 0",
+    "ci": "yarn test; yarn lint",
+    "pre-commit-message": "echo \" Ensuring CI will pass before we event think about commiting this...\"; exit 0"
+  },
+  "pre-commit": [
+    "pre-commit-message",
+    "ci"
+  ],
+  "devDependencies": {
+    "pre-commit": "^1.2.2"
+  }
 }
