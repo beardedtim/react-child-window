@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import PropTypes from 'prop-types';
+import { ifElse, is, always, omit } from 'ramda';
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Window_features
 const defaultWindowOptions = [
@@ -112,8 +113,8 @@ class ChildWindow extends Component {
     const mountElement = this.getChildMountElement(mountID, childWindow);
     const renderToChild = comp => render(comp, mountElement);
 
-    this.renderToChild = R.ifElse(
-      R.is(Array),
+    this.renderToChild = ifElse(
+      is(Array),
       comp => renderToChild(<PopoutWrapper>{comp}</PopoutWrapper>),
       renderToChild
     );
@@ -141,13 +142,13 @@ class ChildWindow extends Component {
 
   closeWindow = () => this.childWindow && this.childWindow.close()
 
-  updateChildren = ({ children, onLoad, onUnload, ...props }) => React.Children
+  updateChildren = ({ children, ...props }) => React.Children
   .map(
     children,
-    child => React.cloneElement(child, props)
+    child => React.cloneElement(child, omit(['onLoad','onUnload'], props))
   )
 
-  render = () => null
+  render = always(null)
 }
 
 export default ChildWindow;
